@@ -3,38 +3,33 @@
 #include <sstream>
 #include "Utils.hpp"
 
+
 using namespace std;
 
 
 int main()
 {
-    string inputFileName = "./vectors.txt";
+    string inputFileName = "./data.csv";
     size_t n = 0;
-    unsigned int* v1 = nullptr;
-    unsigned int* v2 = nullptr;
+    double* w = nullptr;
+    double* r = nullptr;
+    double Sum = 0;
+    double portfolioreturn = 0;
+    double rate = 0;
 
-    if (!ImportVectors(inputFileName, n, v1, v2))
+    if (!ImportAll(inputFileName, Sum, n, w, r))
     {
         cerr<< "Something goes wrong with import"<< endl;
         return -1;
     }
-    else
-        cout<< "Import successful: n= "<< n<< " v1= "<< ArrayToString(n, v1)<< " v2= "<< ArrayToString(n, v2)<< endl;
 
-    unsigned int dotProduct = DotProduct(n, v1, v2);
-    cout<< "dot product: "<< dotProduct << endl;
+    PortFolioReturn(Sum,n,w,r,portfolioreturn,rate);
 
-    string outputFileName = "./dotProduct.txt";
-    if (!ExportResult(outputFileName, n, v1, v2, dotProduct))
+    string outputFileName = "./result.txt";
+    if (!ExportResult(outputFileName, n, w, r, portfolioreturn,Sum,rate))
     {
         cerr<< "Something goes wrong with export"<< endl;
         return -1;
     }
-    else
-        cout<< "Export successful"<< endl;
 
-    delete[] v1;
-    delete[] v2;
-
-    return 0;
 }

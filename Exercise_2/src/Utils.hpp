@@ -3,15 +3,16 @@
 
 using namespace std;
 
-bool ImportAll(const string& inputFilePath, unsigned int Sum, size_t& n,
+bool ImportAll(string& inputFilePath, double &Sum, size_t& n,
                double*& w, double*& r);
 
-double PortFolioReturn(const unsigned int Sum, const size_t& n,
-                       const double* const& w, const double* const& r);
+double PortFolioReturn(double &Sum,size_t& n,
+                       const double* const& w, const double* const& r,
+                        double &portfolioreturn, double &rate);
 
-bool ExportResult(const string& outputFilePath, const size_t& n,
-                         const double* const& w, const double* const& r,
-                            const double& PortFolioReturn);
+bool ExportResult(string &outputFilePath, size_t& n,
+                         const double* const &w, const double* const &r,
+                           double &portfolioreturn, double &Sum, double &rate);
 
 
 
